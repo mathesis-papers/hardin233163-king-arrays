@@ -1,0 +1,451 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue,
+ pdftitle={Extending Orrick's rectangle count to Barker's king-strip conjectures},
+ pdfauthor={Haobo Ma; Wenlin Zhang}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\N}{\mathbb{N}}
+\title{Extending Orrick's rectangle count\\to Barker's king-strip conjectures}
+\author{Haobo Ma\\\small ChronoAI Pte Ltd, Singapore
+\and Wenlin Zhang\\\small National University of Singapore\\\small ChronoAI Pte Ltd, Singapore}
+\date{November 16, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Extending Orrick's rectangle count (2017, answer 2088242, revision 5)
+\cite{orrick}, we prove Colin Barker's conjectures in OEIS A233163,
+revision 8, FORMULA lines 8--10 of October 9, 2018, by counting
+complementary colour pairs and their normalized eight-colour realizations.
+More generally, for every $n,k\geq2$ the corresponding rectangle count is
+$2^{nk-4}(2^{n-2}+2^{k-2}-1)$.
+Orrick's four-colour classification and Britnell--Wildon's path enumeration
+(2015, Proposition 8.1) \cite{britnell-wildon} give all seven empirical
+column recurrences in the linked OEIS A233168.
+They also give Barker's closed-form and generating-function conjectures
+in the path entry A233162 and the width-four through width-seven entries
+A233164--A233167.
+\end{abstract}
+
+\section{The counting problem}
+
+Hardin's entry A233163 defines arrays of height $n$ and width three;
+Barker conjectures their full generating function and a closed formula
+\cite{hardin,barker-source}. We derive both formulas from known
+four-colour counts by an exact normalization argument.
+The linked rectangle table A233168 records
+empirical recurrences at widths one through seven \cite{rectangles}.
+Chang and Shrock's chromatic polynomials give the labelled four-colour
+counts of free strips of widths two, three and four \cite{chang-shrock}.
+Britnell and Wildon count paired-colour paths \cite[Proposition 8.1]{britnell-wildon}.
+Orrick gives the labelled four-colour count for every rectangular board
+\cite{orrick}; Eppstein later gives a zone construction \cite{eppstein}.
+The additional ingredient here is an exact first-occurrence normalization
+with two choices at every later occurrence of a complementary colour pair.
+Together these give the literal eight-colour count at every width, including
+the missing-colour path cases, and settle all six Barker entries A233162--A233167.
+
+For positive integers $n,k$, let $T(n,k)$ count arrays
+$c=(c_{i,j})\in\{0,1,\ldots,7\}^{n\times k}$ subject to these conditions:
+\begin{itemize}
+\item Two distinct cells with row and column distances at most one must
+have unequal values whose sum is not seven. Thus horizontal, vertical,
+and both diagonal neighbours are constrained, with no wraparound.
+\item The top-left value is zero.
+\item In row-major order, every occurrence of $2,3,4,5,6$ has an earlier $1$;
+every occurrence of $3,4,5$ has an earlier $2$; and every $4$ has an earlier $3$.
+\end{itemize}
+Here ``earlier'' means a smaller value of $k(i-1)+(j-1)$, with
+$1\leq i\leq n$ and $1\leq j\leq k$. Colours may be absent.
+There is no precedence condition on colour $7$.
+These are literal arrays, not counts obtained by dividing by a group order.
+Write $a(n)=T(n,3)$ for $n\geq1$, and set $a(0)=0$ for the generating series.
+
+\begin{theorem}\label{thm:rectangle}
+For all integers $n,k\geq2$,
+\begin{equation}\label{eq:rectangle}
+ T(n,k)=2^{nk-4}\bigl(2^{n-2}+2^{k-2}-1\bigr).
+\end{equation}
+\end{theorem}
+
+\section{Complementary pairs and rectangle counts}
+
+Assign colour $u$ the pair label $\beta(u)=\min(u,7-u)$.
+The four pairs are $\{0,7\},\{1,6\},\{2,5\},\{3,4\}$.
+For $u,v\in\{0,\ldots,7\}$,
+\[
+ u\ne v\ \hbox{and}\ u+v\ne7
+ \quad\Longleftrightarrow\quad \beta(u)\ne\beta(v).
+\]
+Every $2\times2$ square therefore contains all four pair labels.
+
+\paragraph{Normalization and the colour choices.}
+Partition the cells according to their pair labels, temporarily forgetting
+the names of the four classes. Order those classes by first occurrence
+in row-major order and name them $0,1,2,3$.
+The precedence conditions force the first occurrence in these classes
+to have colour $0,1,2,3$, respectively. Indeed, $6$ requires an earlier $1$,
+$5$ requires an earlier $2$, and $4$ requires an earlier $3$; the first
+appearances of the latter three pairs must occur in that order.
+The first occurrence of pair $0$ is the top-left cell and is fixed at $0$.
+Every later occurrence of a pair has either of its two colours available:
+all required earlier colours have already appeared. Conversely, these
+choices satisfy every precedence clause.
+
+Since $n,k\geq2$, all four pairs occur. Each pair partition thus has
+exactly $2^{nk-4}$ literal colour realizations. It remains to count the
+pair partitions. This is a bijection with independent binary choices,
+not an orbit-divisor assumption.
+
+\paragraph{Counting the pair partitions (Orrick's classification).}
+We include a proof of Orrick's rectangle count \cite{orrick}, expressed
+in terms of horizontal edge sets.
+For this count, label the upper-left square as
+$\left(\begin{smallmatrix}0&1\\2&3\end{smallmatrix}\right)$.
+Every partition has a unique such auxiliary labeling; relabeling by first
+appearances recovers the normalization just described.
+In the first two rows, each new column must contain the two labels
+complementary to the preceding column's labels, in either order.
+There are therefore $2^{k-2}$ possible two-row patterns.
+
+For the top row $p_{1,1},\ldots,p_{1,k}$ of such a pattern, put
+$H_j=\{p_{1,j},p_{1,j+1}\}$ for $1\leq j<k$.
+The four-label condition on each square implies that the horizontal
+edge sets of successive rows alternate between $H_j$ and its complement
+in $\{0,1,2,3\}$.
+
+If all $H_j$ are equal, the top row alternates between $0$ and $1$,
+and the second row alternates between $2$ and $3$.
+There is exactly one such initial pattern. Each additional row alternates
+between the complementary two labels, with two possible starting labels.
+This case contributes $2^{n-2}$ partitions.
+
+Otherwise, some adjacent $H_j,H_{j+1}$ differ. They intersect in
+exactly one label, as do their complements. In every row, the shared cell
+at column $j+1$ is consequently forced. Its value and the prescribed
+two-element edge sets determine the entire row, proceeding in both
+directions. A continuation exists: repeat the initial two rows
+alternately. Thus each of the other $2^{k-2}-1$ initial patterns has
+exactly one continuation to height $n$.
+The number of partitions is
+$2^{n-2}+2^{k-2}-1$, proving Theorem~\ref{thm:rectangle}.
+
+\begin{corollary}\label{cor:labelled}
+For $n,k\geq2$, the number of proper colourings of the king rectangle
+with four named colours is $24(2^{n-2}+2^{k-2}-1)$.
+Moreover $T(n,k)=T(k,n)$, and
+$T(m,m)=2^{m^2-4}(2^{m-1}-1)$ for $m\geq2$.
+\end{corollary}
+\begin{proof}
+Every pair partition uses all four labels, so it has exactly $4!$
+labelings. The labelled formula is Orrick's \cite{orrick};
+the remaining identities follow from Theorem~\ref{thm:rectangle}.
+For square boards the labelled count is $12\cdot2^m-24$,
+also given by Eppstein \cite{eppstein}.
+\end{proof}
+
+\section{Barker's conjectures and the linked recurrences}
+
+\begin{corollary}\label{cor:barker}
+The three-column counts satisfy
+\begin{align}
+ a(1)&=3, & a(n)&=8^{n-2}(2^n+4)\quad(n\geq2),\label{eq:closed}\\
+ a(n)&=24a(n-1)-128a(n-2)\quad(n\geq4),\label{eq:recurrence}\\
+ \sum_{n\geq0}a(n)x^n
+ &=\frac{x(3-64x+288x^2)}{(1-8x)(1-16x)}
+ \quad\hbox{in }\mathbb{Q}[[x]].\label{eq:gf}
+\end{align}
+\end{corollary}
+\begin{proof}
+The one-row arrays are $010,012,017$, so $a(1)=3$.
+Putting $k=3$ in \eqref{eq:rectangle} gives
+$a(n)=4\cdot16^{n-2}+4\cdot8^{n-2}$ for $n\geq2$,
+which equals \eqref{eq:closed}. Both geometric terms satisfy
+\eqref{eq:recurrence}. Summing them from $n=2$ yields
+\[
+ 3x+\frac{4x^2}{1-16x}+\frac{4x^2}{1-8x}
+ =\frac{3x-64x^2+288x^3}{(1-8x)(1-16x)}.
+\]
+The denominators have constant coefficient one, so these are valid formal
+power-series identities. In particular $a(0)=0$, $a(2)=8$, and $a(3)=96$.
+\end{proof}
+
+\begin{corollary}\label{cor:recurrences}
+For $k\geq3$ and $n\geq4$,
+\begin{equation}\label{eq:widthrec}
+ T(n,k)=3\cdot2^kT(n-1,k)-2^{2k+1}T(n-2,k).
+\end{equation}
+For $n\geq2$, $T(n,2)=8^{n-2}$.
+\end{corollary}
+\begin{proof}
+Formula \eqref{eq:rectangle}, viewed as a function of $n$,
+is a linear combination of $(2^k)^n$ and $(2^{k+1})^n$.
+Their sum and product give the coefficients in \eqref{eq:widthrec}.
+At width two the first term disappears from that linear combination,
+giving $T(n,2)=8^{n-2}$ for $n\geq2$, and hence
+$T(n,2)=8T(n-1,2)$ for $n\geq3$.
+This also proves the shift to the powers of eight, A001018, stated in
+A233168's cross-references.
+\end{proof}
+
+The width-one case is a path rather than a rectangle containing a square.
+Let $L(m)=T(m,1)=T(1,m)$.
+Let $S(r,s)$ be the number of partitions of an $r$-element set into
+$s$ nonempty blocks, with $S(0,0)=1$ and $S(r,s)=0$ for impossible indices.
+A path of $m$ cells has $S(m-1,j-1)$ proper pair partitions using $j$
+classes. To see this, appending a cell to a partition with $j$ classes
+allows any of $j-1$ existing classes other than the preceding one,
+or creates a new class from a partition with $j-1$ classes.
+This is the recurrence for $S(m-1,j-1)$, with the same initial conditions.
+\begin{corollary}\label{cor:path}
+For every $m\geq1$ (Britnell--Wildon's path count),
+\begin{equation}\label{eq:path}
+ L(m)=\sum_{j=1}^{\min(4,m)}2^{m-j}S(m-1,j-1).
+\end{equation}
+For $m\geq5$, $L(m)=12L(m-1)-44L(m-2)+48L(m-3)$.
+For $m\geq2$ and as a formal power series, respectively,
+\begin{align}
+L(m)&=\frac{2^{m-6}}{9}(90+9\cdot2^m+2\cdot3^m),\label{eq:pathclosed}\\
+\sum_{m\geq1}L(m)x^m
+ &=\frac{x(1-11x+35x^2-29x^3)}{(1-2x)(1-4x)(1-6x)}.\label{eq:pathgf}
+\end{align}
+Thus Barker's two conjectures in A233162 are consequences of the path
+enumeration \cite{path-source,britnell-wildon}.
+\end{corollary}
+\begin{proof}
+The colour-choice argument above, now with $j$ first occurrences fixed,
+gives \eqref{eq:path}.
+For $m\geq2$, expand the Stirling numbers using
+$S(r,1)=1$, $S(r,2)=(2^r-2)/2$, and
+$S(r,3)=(3^r-3\cdot2^r+3)/6$ for $r\geq1$.
+Equation~\eqref{eq:path} becomes
+\[
+ L(m)=\frac{5}{32}2^m+\frac{1}{64}4^m+\frac{1}{288}6^m.
+\]
+The roots $2,4,6$ give, for $m\geq5$,
+\[
+ L(m)=12L(m-1)-44L(m-2)+48L(m-3).
+\]
+The initial values are $L(1),L(2),L(3),L(4)=1,1,3,11$.
+The same ordered path represents a horizontal or vertical array.
+The exponential expression is \eqref{eq:pathclosed}. Summing from $m=2$
+and inserting $L(1)=1$ gives
+\[
+x+x^2\left(\frac{5/8}{1-2x}+\frac{1/4}{1-4x}
++\frac{1/8}{1-6x}\right),
+\]
+which has the numerator in \eqref{eq:pathgf}.
+Britnell--Wildon's Proposition 8.1 counts these same canonical
+paired-colour paths by marked partitions; the proof here uses the
+equivalent weighted ordinary-partition formula.
+\end{proof}
+
+\begin{corollary}\label{cor:allseries}
+For $k\geq2$, put $C_k=2^{k-2}-1$. In $\mathbb Q[[x]]$,
+\begin{equation}\label{eq:allseries}
+ \sum_{n\geq1}T(n,k)x^n
+ =L(k)x+2^{2k-4}x^2\left(
+ \frac{1}{1-2^{k+1}x}+\frac{C_k}{1-2^kx}\right).
+\end{equation}
+This proves all the generating-function and closed-form conjectures
+in A233163--A233167 \cite{barker-source,siblings}.
+\end{corollary}
+\begin{proof}
+For $n\geq2$, Theorem~\ref{thm:rectangle} is
+$T(n,k)=(2^{k+1})^n/64+C_k(2^k)^n/16$.
+Summing these geometric series from $n=2$, and supplying the one-row
+coefficient from Corollary~\ref{cor:path}, gives \eqref{eq:allseries}.
+The table below expands its numerator over
+$(1-2^kx)(1-2^{k+1}x)$. The initial values
+$L(3),\ldots,L(7)=3,11,48,236,1248$ follow from \eqref{eq:path}.
+The closed forms in the middle column are algebraic rearrangements of
+\eqref{eq:rectangle}, valid for $n\geq2$.
+\end{proof}
+\begin{center}
+\small
+\begin{tabular}{@{}cll@{}}
+\toprule
+$k$ & $T(n,k)$, $n\geq2$ & Series numerator\\
+\midrule
+3 & $8^{n-2}(2^n+4)$ & $x(3-64x+288x^2)$\\
+4 & $4^{2n-3}(2^n+12)$ & $x(11-464x+3840x^2)$\\
+5 & $2^{5n-6}(2^n+28)$ & $16x(3-256x+4224x^2)$\\
+6 & $64^{n-1}(2^n+60)$ & $4x(59-10304x+356352x^2)$\\
+7 & $2^{7n-6}(2^n+124)$ & $32x(39-13952x+1019904x^2)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Coverage of the source statements.}
+The following maps the FORMULA assertions in all six counting entries
+to their proofs. Locations refer to the pinned OEIS exports in the
+references. The A233168 table values are instances of the rectangle
+and path formulas, rather than additional conjectures.
+\begin{center}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.47\linewidth}>{\raggedright\arraybackslash}p{0.46\linewidth}@{}}
+\toprule
+Source item & Coverage\\
+\midrule
+A233163 rev.\ 8, lines 7, 9--10 & Proved: Corollary~\ref{cor:barker}\\
+A233162 rev.\ 21, lines 9, 11--12 & Proved from prior path count: Corollary~\ref{cor:path}\\
+A233164 rev.\ 8, lines 7, 9--10 & Proved: Corollaries~\ref{cor:recurrences}, \ref{cor:allseries}, $k=4$\\
+A233165 rev.\ 8, lines 7, 9--10 & Proved: same, $k=5$\\
+A233166 rev.\ 8, lines 7, 9--10 & Proved: same, $k=6$\\
+A233167 rev.\ 14, lines 7, 9--10 & Proved: same, $k=7$\\
+A233168 rev.\ 8, lines 19--25 & Proved: all seven recurrences, Corollaries~\ref{cor:recurrences}, \ref{cor:path}\\
+A233168 rev.\ 8, line 31; A001018 & Proved: $T(n,2)=8^{n-2}$, $n\geq2$\\
+Chang--Shrock, labelled widths 2--4 & Reproved; prior proof Chang--Shrock, 2000: Corollary~\ref{cor:labelled}\\
+Britnell--Wildon, paired-colour paths & Reproved; prior proof Britnell--Wildon, 2015: Corollary~\ref{cor:path}\\
+Orrick, labelled rectangle count & Reproved; prior proof Orrick, 2017: Corollary~\ref{cor:labelled}\\
+Literal all-width formula and symmetry & Not posed in the OEIS conjectures; proved from prior counts and normalization\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Related work and verification}
+
+Chang and Shrock compute chromatic polynomials for strips with both
+diagonals and free boundaries \cite[Section II]{chang-shrock}.
+With four named colours, their length convention is $n=m+2$ vertices.
+If $P_k(n)$ denotes this labelled count, their equations (2.1), (2.10)
+and (2.14)--(2.22) specialize to
+\[
+ \sum_{m\geq0}P_k(m+2)z^m=
+ \begin{cases}
+ 24/(1-2z),&k=2,\\
+ 24(2-3z)/((1-z)(1-2z)),&k=3,\\
+ 24(4-7z)/((1-z)(1-2z)),&k=4.
+ \end{cases}
+\]
+These are exactly $P_k(n)=24(2^{n-2}+2^{k-2}-1)$ for those widths.
+Hardin's A068293, recorded in 2002, also gives one quarter of the square
+count \cite{square-data}; that numerical formula predates Barker's
+normalized eight-colour conjectures.
+
+Britnell and Wildon prove the paired-colour path enumeration in
+Proposition 8.1, with the relevant marked-partition generating functions
+in Section 6.5 \cite{britnell-wildon}.
+Orrick's answer, first posted January 8, 2017 and expanded in revision 5
+on January 9, proves the rectangle count by the two-colour-row or
+two-colour-column classification \cite{orrick}.
+Later proofs include Blatter's Klein-four-group count of a $4\times5$
+board (2017), Eppstein's zone count (2019), paw88789's $4\times4$ count
+(2023), anankElpis's square-board proof (2024), and Efremov's published
+square-board solution (2025) \cite{later-counts,eppstein,efremov}.
+
+Eppstein counts proper four-colourings of an $m\times m$ king board as
+$12\cdot2^m-24$ for $m\geq2$, using two families of crossing zones
+\cite[final two paragraphs]{eppstein}. Our partition classification
+expresses the same mechanism in terms of adjacent horizontal edge sets.
+The normalization fibres and one-row calculation supply the additional
+information needed for Barker's eight-colour statements.
+
+At the pinned
+\href{https://github.com/the-omega-institute/trureturing/blob/0a197c5f83db6039a3c1177b20d31df4bfe95cd9/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233163KingStrip.lean}{\texttt{HardinA233163KingStrip.lean}},
+the relevant namespace is
+\begin{center}\small\ttfamily
+D5.S3.Combinatorics.TraceAvoidingArrays.\\
+HardinA233163KingStrip
+\end{center}
+The declaration \texttt{a} defines the literal three-column count and
+\texttt{result} proves the complete rational series \eqref{eq:gf}.
+Its proof combines the normalized two-row counts, the $16$ and $8$
+continuation rates, and an induction over every height.
+The all-width formula \eqref{eq:rectangle} and the path argument
+\eqref{eq:path} have written proofs here; the linked declaration's
+scope is width three.
+The imported
+\href{https://github.com/the-omega-institute/trureturing/blob/0a197c5f83db6039a3c1177b20d31df4bfe95cd9/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233196Strip.lean}{\texttt{HardinA233196Strip.lean}}
+supplies \texttt{width\_counting\_bridge}, equating the normalized literal
+cardinality with a row-transition sum for a fixed positive width.
+It is a counting bridge, rather than the rectangle formula.
+
+The accompanying \texttt{verify.py} uses exact integer and rational
+arithmetic. It independently counts literal eight-colour arrays and
+canonical four-pair arrays over the finite ranges stated in
+\texttt{verification.json}. It also checks the two-row seeds, boundary
+continuations, recurrence coefficients, and generating-series numerator.
+The finite calculations support, rather than replace, the all-size proofs.
+The source package contains this TeX file, the checker, its output,
+scientific metadata, and rebuild instructions.
+
+\begin{thebibliography}{99}\small\raggedright
+\setlength{\itemsep}{0pt}
+\bibitem{hardin}
+R. H. Hardin, \emph{A233163}, OEIS, revision 8 (October 9, 2018),
+NAME and FORMULA.
+\url{https://oeis.org/A233163}.
+\bibitem{barker-source}
+C. Barker, conjectures of October 9, 2018 in Hardin's \emph{A233163},
+FORMULA block, revision 8, lines 8--10 of the
+\href{https://raw.githubusercontent.com/oeis/oeisdata/571197984aeda7b8b680fe3a1f6a43f9898cd441/seq/A233/A233163.seq}{pinned OEIS export}.
+\bibitem{rectangles}
+R. H. Hardin, \emph{A233168}, OEIS, revision 8 (October 4, 2024),
+FORMULA block, widths one through seven.
+\url{https://oeis.org/A233168}.
+\bibitem{siblings}
+R. H. Hardin, with conjectures by C. Barker (October 9, 2018),
+\emph{A233164, A233165, A233166, A233167},
+The On-Line Encyclopedia of Integer Sequences.
+FORMULA lines 7--10 in revisions 8, 8, 8, 14, respectively;
+the last revision is dated September 15, 2024.
+\href{https://raw.githubusercontent.com/oeis/oeisdata/571197984aeda7b8b680fe3a1f6a43f9898cd441/seq/A233/A233164.seq}{A233164},
+\href{https://raw.githubusercontent.com/oeis/oeisdata/571197984aeda7b8b680fe3a1f6a43f9898cd441/seq/A233/A233165.seq}{A233165},
+\href{https://raw.githubusercontent.com/oeis/oeisdata/571197984aeda7b8b680fe3a1f6a43f9898cd441/seq/A233/A233166.seq}{A233166},
+\href{https://raw.githubusercontent.com/oeis/oeisdata/571197984aeda7b8b680fe3a1f6a43f9898cd441/seq/A233/A233167.seq}{A233167}.
+\bibitem{eppstein}
+D. Eppstein, \emph{Coloring kinggraphs}, April 11, 2019.
+\url{https://11011110.github.io/blog/2019/04/11/coloring-kinggraphs.html}.
+\bibitem{orrick}
+W. Orrick, answer 2088242 to \emph{In how many ways can you colorize the
+vertices of a grid with 4 colors so that every unit-square vertices are all
+of a different color?}, Mathematics Stack Exchange, January 8, 2017;
+revision 5, January 9, 2017.
+\url{https://math.stackexchange.com/revisions/2088242/5}.
+\bibitem{britnell-wildon}
+J. R. Britnell and M. Wildon, \emph{Bell numbers, partition moves and the
+eigenvalues of the random-to-top shuffle in Dynkin Types A, B and D},
+Journal of Combinatorial Theory, Series A \textbf{148} (2017), 116--144.
+\href{https://doi.org/10.1016/j.jcta.2016.12.003}{doi:10.1016/j.jcta.2016.12.003}.
+\href{https://arxiv.org/abs/1507.04803v1}{arXiv:1507.04803v1},
+July 16, 2015, Section 6.5 and Proposition 8.1 (pp.\ 23--24).
+\bibitem{path-source}
+R. H. Hardin, with conjectures by C. Barker (February 18, 2018),
+\emph{A233162}, The On-Line Encyclopedia of Integer Sequences,
+revision 21, May 31, 2024, FORMULA lines 9--12 in the
+\href{https://raw.githubusercontent.com/oeis/oeisdata/571197984aeda7b8b680fe3a1f6a43f9898cd441/seq/A233/A233162.seq}{pinned export}.
+\bibitem{later-counts}
+C. Blatter, Mathematics Stack Exchange answer 2398953, August 19, 2017,
+\url{https://math.stackexchange.com/a/2398953};
+paw88789, answer 4736308, July 14, 2023,
+\url{https://math.stackexchange.com/a/4736308};
+anankElpis, answer 4980383, October 5, 2024,
+\url{https://math.stackexchange.com/a/4980383}.
+\bibitem{efremov}
+I. Efremov, solution to problem M2810, \emph{Kvant}, 2025, no.\ 1,
+pp.\ 23--24. Problem: 2024, no.\ 9, p.\ 20.
+\url{https://www.kvant.digital/problems/m2810/}.
+\bibitem{chang-shrock}
+S.-C. Chang and R. Shrock,
+\emph{Ground-state entropy of the Potts antiferromagnet with
+next-nearest-neighbor spin-spin couplings on strips of the square lattice},
+Phys. Rev. E \textbf{62} (2000), 4650--4664.
+\href{https://doi.org/10.1103/PhysRevE.62.4650}{doi:10.1103/PhysRevE.62.4650}.
+The formulas cited above are in
+\href{https://arxiv.org/abs/cond-mat/0005236v1}{arXiv:cond-mat/0005236v1},
+May 15, 2000.
+\bibitem{square-data}
+R. H. Hardin, \emph{A068293}, The On-Line Encyclopedia of Integer Sequences,
+February 24, 2002, NAME and first COMMENT;
+identified with four-colour king boards in A212209, row 4.
+\url{https://oeis.org/A068293}; \url{https://oeis.org/A212209}.
+\end{thebibliography}
+\noindent\small
+\copyright\ 2026 Haobo Ma and Wenlin Zhang.
+Licensed under Creative Commons Attribution 4.0 International
+(CC BY 4.0), \url{https://creativecommons.org/licenses/by/4.0/}.
+\end{document}

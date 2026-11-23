@@ -1,0 +1,251 @@
+{
+  "arithmetic": "exact integers and rational numbers; no floating point",
+  "first_rows": [
+    "010",
+    "012",
+    "017"
+  ],
+  "two_row_seeds": [
+    [
+      "010",
+      "232",
+      "ABA"
+    ],
+    [
+      "010",
+      "235",
+      "ABA"
+    ],
+    [
+      "012",
+      "230",
+      "ABC"
+    ],
+    [
+      "012",
+      "237",
+      "ABC"
+    ],
+    [
+      "012",
+      "530",
+      "ABC"
+    ],
+    [
+      "012",
+      "537",
+      "ABC"
+    ],
+    [
+      "017",
+      "232",
+      "ABA"
+    ],
+    [
+      "017",
+      "235",
+      "ABA"
+    ]
+  ],
+  "seed_types": {
+    "ABA": 4,
+    "ABC": 4
+  },
+  "proper_pair_boundaries": {
+    "ABA": 12,
+    "ABC": 24
+  },
+  "boundary_rows_tested": 18432,
+  "literal_eight_colour_counts": {
+    "heights": [
+      1,
+      12
+    ],
+    "by_width": {
+      "1": {
+        "first_six_counts": [
+          1,
+          1,
+          3,
+          11,
+          48,
+          236
+        ],
+        "all_counts_sha256": "8aa2d9b6702a8c11634be8f75d3e124aa4ce5aab261fd6914297cec1e66b8483"
+      },
+      "2": {
+        "first_six_counts": [
+          1,
+          1,
+          8,
+          64,
+          512,
+          4096
+        ],
+        "all_counts_sha256": "e7a2394b4973e1e295b7410849d58bca10b8c02ba54c2068d70338f3c351bb6f"
+      },
+      "3": {
+        "first_six_counts": [
+          3,
+          8,
+          96,
+          1280,
+          18432,
+          278528
+        ],
+        "all_counts_sha256": "b04b31d0542bcc95e136c685e477cd89c663faf614af374e11c8a30b4ab31683"
+      }
+    }
+  },
+  "canonical_four_pair_rectangles": {
+    "heights": [
+      2,
+      6
+    ],
+    "widths": [
+      2,
+      6
+    ],
+    "rectangles": 25
+  },
+  "canonical_pair_paths": {
+    "lengths": [
+      1,
+      12
+    ]
+  },
+  "named_four_colour_rectangles": {
+    "heights": [
+      2,
+      6
+    ],
+    "widths": [
+      2,
+      6
+    ],
+    "rectangles": 25
+  },
+  "barker_series": {
+    "widths": [
+      3,
+      7
+    ],
+    "coefficient_degrees": [
+      0,
+      210
+    ],
+    "numerators_after_one_factor_of_x": {
+      "3": [
+        3,
+        -64,
+        288
+      ],
+      "4": [
+        11,
+        -464,
+        3840
+      ],
+      "5": [
+        48,
+        -4096,
+        67584
+      ],
+      "6": [
+        236,
+        -41216,
+        1425408
+      ],
+      "7": [
+        1248,
+        -446464,
+        32636928
+      ]
+    }
+  },
+  "barker_closed_forms": {
+    "widths": [
+      3,
+      7
+    ],
+    "heights": [
+      2,
+      210
+    ]
+  },
+  "general_series_geometric_coefficients": {
+    "widths": [
+      2,
+      12
+    ],
+    "heights": [
+      2,
+      30
+    ]
+  },
+  "square_formula": {
+    "sizes": [
+      2,
+      30
+    ]
+  },
+  "barker_path_generating_series": {
+    "coefficient_degrees": [
+      0,
+      210
+    ]
+  },
+  "barker_path_closed_form": {
+    "lengths": [
+      2,
+      210
+    ]
+  },
+  "chang_shrock_four_colour_series": {
+    "widths": [
+      2,
+      3,
+      4
+    ],
+    "coefficient_degrees": [
+      0,
+      208
+    ]
+  },
+  "chang_shrock_width_four_polynomials_at_four": {
+    "denominator_coefficients": [
+      1,
+      -4,
+      5,
+      -2,
+      0
+    ],
+    "numerator_coefficients_divided_by_24": [
+      4,
+      -11,
+      7,
+      0
+    ]
+  },
+  "three_column_generating_series_coefficients": [
+    0,
+    210
+  ],
+  "rectangle_recurrences": {
+    "widths": [
+      3,
+      7
+    ],
+    "heights": [
+      4,
+      30
+    ]
+  },
+  "path_recurrence": {
+    "lengths": [
+      5,
+      30
+    ]
+  },
+  "scope": "The computations check finite instances. The note proves the rectangle and path formulas for every stated size.",
+  "status": "all assertions passed"
+}

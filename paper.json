@@ -1,0 +1,66 @@
+{
+  "files": {
+    "pdf": {
+      "bytes": 88159,
+      "matches_public": true,
+      "path": "paper.pdf",
+      "public_sha256": "9d1fe5aba4ba8956ca3e67983702dc136e71c9854ea1e9ce15bd218ab38fcc38",
+      "sha256": "9d1fe5aba4ba8956ca3e67983702dc136e71c9854ea1e9ce15bd218ab38fcc38"
+    },
+    "source": {
+      "bytes": 16535,
+      "matches_public": true,
+      "path": "source.archive",
+      "public_sha256": "3af80d63162e214c5e20e2e59271682e0fa49e5c8885f7cb697503f083e20183",
+      "sha256": "3af80d63162e214c5e20e2e59271682e0fa49e5c8885f7cb697503f083e20183"
+    }
+  },
+  "source_identity": "Mathesis public projection",
+  "work": {
+    "abstract_text": "Extending Orrick's rectangle count (2017, answer 2088242, revision 5), we prove Colin Barker's conjectures in OEIS A233163, revision 8, FORMULA lines 8–10 of October 9, 2018, by counting complementary colour pairs and their normalized eight-colour realizations. For every n,k >= 2 the rectangle count is 2^(nk-4)(2^(n-2)+2^(k-2)-1). Orrick's four-colour classification and Britnell–Wildon's path enumeration (2015, Proposition 8.1) give all seven empirical column recurrences in A233168, as well as Barker's closed-form and generating-function conjectures in A233162 and A233164–A233167.",
+    "authors": [
+      {
+        "affiliation": "ChronoAI Pte Ltd, Singapore",
+        "name": "Haobo Ma"
+      },
+      {
+        "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+        "name": "Wenlin Zhang"
+      }
+    ],
+    "concept_doi": null,
+    "current_version": 2,
+    "doi": null,
+    "lean_source": {
+      "revision": "0a197c5f83db6039a3c1177b20d31df4bfe95cd9",
+      "url": "https://github.com/the-omega-institute/trureturing/blob/0a197c5f83db6039a3c1177b20d31df4bfe95cd9/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233163KingStrip.lean"
+    },
+    "license": "CC-BY-4.0",
+    "msc": [],
+    "pdf": {
+      "bytes": 88159,
+      "sha256": "9d1fe5aba4ba8956ca3e67983702dc136e71c9854ea1e9ce15bd218ab38fcc38",
+      "url": "/api/v1/collected-papers/hardin233163-king-arrays/files/pdf?version=2"
+    },
+    "previous_version": null,
+    "publication": "public",
+    "published_on": "2026-11-23T17:08:24.816736747Z",
+    "record": "hardin233163-king-arrays",
+    "repository_name": "hardin233163-king-arrays",
+    "source": {
+      "bytes": 16535,
+      "sha256": "3af80d63162e214c5e20e2e59271682e0fa49e5c8885f7cb697503f083e20183",
+      "url": "/api/v1/collected-papers/hardin233163-king-arrays/files/source?version=2"
+    },
+    "title": "Extending Orrick's rectangle count to Barker's king-strip conjectures",
+    "versions": [
+      {
+        "previous_version": null,
+        "published_on": "2026-11-23T17:08:24.816736747Z",
+        "revision": "2",
+        "version": 2
+      }
+    ],
+    "work": "hardin233163-king-arrays"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "hardin233163-king-arrays",
+  "revision": 2,
+  "problem_ids": ["hardin233163", "hardin233164", "hardin233166"],
+  "topic": "Barker's generating-function and closed-form conjectures for normalized eight-colour king strips of widths one and three through seven",
+  "title": "Extending Orrick's rectangle count to Barker's king-strip conjectures",
+  "creators": [
+    {"name": "Ma, Haobo", "affiliation": "ChronoAI Pte Ltd, Singapore"},
+    {"name": "Zhang, Wenlin", "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore"}
+  ],
+  "abstract": "Extending Orrick's rectangle count (2017, answer 2088242, revision 5), we prove Colin Barker's conjectures in OEIS A233163, revision 8, FORMULA lines 8–10 of October 9, 2018, by counting complementary colour pairs and their normalized eight-colour realizations. For every n,k >= 2 the rectangle count is 2^(nk-4)(2^(n-2)+2^(k-2)-1). Orrick's four-colour classification and Britnell–Wildon's path enumeration (2015, Proposition 8.1) give all seven empirical column recurrences in A233168, as well as Barker's closed-form and generating-function conjectures in A233162 and A233164–A233167.",
+  "summary": "A normalization extension of Orrick's rectangle count and a reproof of Britnell–Wildon's paired-colour path count, deriving all twelve Barker conjectures at widths one and three through seven and all seven empirical recurrences in A233168. Earlier fixed-width counts of Chang–Shrock and later independent proofs are credited. The three-column generating series is the scope of the linked Lean declaration; the rectangle and path statements have written proofs and finite exact checks.",
+  "license": "cc-by-4.0",
+  "evidence_url": "https://github.com/the-omega-institute/trureturing/blob/0a197c5f83db6039a3c1177b20d31df4bfe95cd9/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233163KingStrip.lean"
+}
