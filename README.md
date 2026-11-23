@@ -5,13 +5,15 @@
 Extending Orrick's rectangle count (2017, answer 2088242, revision 5), we prove Colin Barker's conjectures in OEIS A233163, revision 8, FORMULA lines 8–10 of October 9, 2018, by counting complementary colour pairs and their normalized eight-colour realizations. For every n,k >= 2 the rectangle count is 2^(nk-4)(2^(n-2)+2^(k-2)-1). Orrick's four-colour classification and Britnell–Wildon's path enumeration (2015, Proposition 8.1) give all seven empirical column recurrences in A233168, as well as Barker's closed-form and generating-function conjectures in A233162 and A233164–A233167.
 
 - PDF: [frozen public file](paper.pdf)
+- DOI: [https://doi.org/10.5281/zenodo.24414706](https://doi.org/10.5281/zenodo.24414706)
+- Concept DOI: [https://doi.org/10.5281/zenodo.24414705](https://doi.org/10.5281/zenodo.24414705)
 - License: CC-BY-4.0
 - Version: 2
 - Mathesis record: [hardin233163-king-arrays](https://mathesis-omega-research.apps.chrono-ai.fun/papers/hardin233163-king-arrays?version=2)
 
 ## How to cite
 
-Haobo Ma, Wenlin Zhang (2026). Extending Orrick's rectangle count to Barker's king-strip conjectures. Mathesis, version 2. https://mathesis-omega-research.apps.chrono-ai.fun/papers/hardin233163-king-arrays?version=2
+Haobo Ma, Wenlin Zhang (2026). Extending Orrick's rectangle count to Barker's king-strip conjectures. Mathesis, version 2. https://doi.org/10.5281/zenodo.24414706
 
 ## Statement progress
 
