@@ -31,6 +31,7 @@
     "concept_doi": "10.5281/zenodo.24414705",
     "current_version": 2,
     "doi": "10.5281/zenodo.24414706",
+    "kind": "note",
     "lean_source": {
       "revision": "0a197c5f83db6039a3c1177b20d31df4bfe95cd9",
       "url": "https://github.com/the-omega-institute/trureturing/blob/0a197c5f83db6039a3c1177b20d31df4bfe95cd9/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233163KingStrip.lean"
@@ -55,10 +56,12 @@
     "title": "Extending Orrick's rectangle count to Barker's king-strip conjectures",
     "versions": [
       {
+        "changelog": null,
         "previous_version": null,
         "published_on": "2026-11-23T17:08:24.816736747Z",
         "revision": "2",
-        "version": 2
+        "version": 2,
+        "version_label": null
       }
     ],
     "work": "hardin233163-king-arrays"
